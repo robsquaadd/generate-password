@@ -31,13 +31,16 @@ function getRequirements() {
     ];
     var characterList = [];
     var confirm = [];
+    var falseCount = 0;
     for (var i = 0; i < promptArray.length; i++) {
       confirm[i] = window.confirm(promptArray[i].question);
       if (confirm[i]) {
         characterList = characterList + promptArray[i].string;
+      } else {
+        falseCount += 1;
       }
     }
-    if (confirm === []) {
+    if (falseCount === 4) {
       alert("Please choose at least one character type.");
       getRequirements();
     }
